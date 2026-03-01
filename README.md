@@ -1,4 +1,4 @@
-# :fire: YOSE: You Only Select Essential Tokens for Efficient DiT-based Video Object Removal
+# 🧊 YOSE: You Only Select Essential Tokens for Efficient DiT-based Video Object Removal
 
 This is the official PyTorch codes for our CVPR26 paper.
 
