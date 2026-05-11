@@ -20,6 +20,17 @@ Recent advances in Diffusion Transformer (DiT)-based video generation technologi
 
 Coming Soon~
 
+## Citation
+
+```
+@article{wu2026yose,
+  title={YOSE: You Only Select Essential Tokens for Efficient DiT-based Video Object Removal},
+  author={Wu, Chenyang and Lei, Lina and Li, Fan and Guo, Chun-Le and Kong, Dehong and Qin, Xinran and Wang, Zhixin and Cheng, Ming-Ming and Li, Chongyi},
+  journal={arXiv preprint arXiv:2604.27322},
+  year={2026}
+}
+```
+
 ## License
 
 This project is licensed under the Pi-Lab License 1.0 - see the [LICENSE](LICENSE) file for details.
