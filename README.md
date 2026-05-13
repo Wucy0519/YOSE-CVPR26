@@ -19,7 +19,7 @@ Recent advances in Diffusion Transformer (DiT)-based video generation technologi
 
 ## :newspaper: News
 - [x] Release the inference code reproduced by research enthusiasts.
-- [ ] Release the training code reproduced by research enthusiasts.
+- [x] Release the training code reproduced by research enthusiasts.
 
 ## :wrench: Dependencies and Installation
 This code runs in the same environment as the minimax-remover, which you can find in [here](https://github.com/zibojia/MiniMax-Remover).
