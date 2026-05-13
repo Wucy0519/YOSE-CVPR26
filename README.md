@@ -45,8 +45,26 @@ python test.py
 ### Training
 Firstly, you can download the video dataset from VPData <a href='https://huggingface.co/datasets/TencentARC/VPData'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a> (proposed by VideoPainter), which can also be found in ([here](https://github.com/TencentARC/VideoPainter)).
 Only video is needed, and  70,000 samples are enough.
-
-Coming Soon~
+run
+```shell
+accelerate launch \ 
+    --mixed_precision="bf16" \ 
+    train.py \ 
+    --dataset_path="/path/to/your/dataset" \ 
+    --pretrained_model_name_or_path="/path/to/the/pretrained/model/of/minimax-remover" \ 
+    --batch_size=32 \ 
+    --dataloader_num_workers=4 \ 
+    --gradient_accumulation_steps=1 \ 
+    --output_dir="/path/to/your/save/dir" \ 
+    --logging_dir="logs/" \ 
+    --num_train_epochs=1000 \ 
+    --learning_rate=5e-5 \ 
+    --lr_scheduler="constant" \ 
+    --mixed_precision=bf16 \ 
+    --checkpointing_steps=2000 \ 
+    --validating_steps=100 \ 
+    --use_gradient_checkpointing
+```
 
 ## :book: Citation
 
