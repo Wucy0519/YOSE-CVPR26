@@ -297,8 +297,10 @@ def get_random_shape(edge_num=9, ratio=0.7, width=432, height=240):
     fig.canvas.draw()
 
     # 将 matplotlib 图形转换为 numpy 数组
-    data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
-    data = data.reshape((fig.canvas.get_width_height()[::-1]) + (3,))
+    # 使用新版 buffer_rgba()，它会直接返回形状为 (H, W, 4) 的 RGBA 数组
+    data = np.asarray(fig.canvas.buffer_rgba())
+    # 取前三个通道 (RGB)，舍弃 Alpha 通道
+    data = data[..., :3].copy() 
     plt.close(fig)
 
     # 后处理
@@ -396,6 +398,130 @@ def _bounding_box_method(mask, padding=0):
     rect_mask[int(y_min):int(y_max), int(x_min):int(x_max)] = 1
     
     return rect_mask
+
+class TrainingDataset(Dataset):
+    def __init__(self, 
+                 video_path = r"/path/to/your/VPData/or/other/dataset",
+                 modality='video',
+                 max_num_frames = 81,
+                 frame_interval=1, 
+                 load_fps = 8,
+                 num_frames=81, 
+                 height=480, 
+                 width=640,
+                 random_mask_prob=0.9,
+                 jvxing = False,
+                 is_outpainting = False):
+        self.is_outpainting = is_outpainting
+        self.video_path = video_path
+        self.modality = modality.lower()
+        self.max_num_frames = max_num_frames
+        self.frame_interval = frame_interval
+        self.num_frames = num_frames
+        self.load_fps = load_fps
+        self.height = height
+        self.width = width
+        self.jvxing = jvxing
+        
+        self.random_mask_prob = random_mask_prob
+
+        self.frame_process = v2.Compose([
+            v2.CenterCrop(size=(height, width)),
+            v2.Resize(size=(height, width), antialias=True),
+            v2.ToTensor(),
+            v2.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
+        ])
+        self.mask_process = v2.Compose([
+            v2.CenterCrop(size=(height, width)),
+            v2.Resize(size=(height, width), antialias=True),
+            v2.ToTensor(),
+        ])
+
+        video_paths = []
+
+        video_dir_path = glob.glob(self.video_path+"//*")
+
+        for sub_dir_path in video_dir_path:
+            sub_video_path = glob.glob(sub_dir_path+"//*.mp4")
+            video_paths = video_paths+sub_video_path
+        self.video_paths = video_paths
+
+        self.all_paths = [(p, 'video') for p in self.video_paths]
+            
+        print(f"Loaded {len(self.all_paths)} samples of modality: {self.modality}")
+    
+    def __len__(self):
+        return len(self.all_paths)
+    
+    def __getitem__(self, index):
+        path, data_type = self.all_paths[index]
+
+        use_random_mask = True
+
+        width = self.width
+        height = self.height
+
+        try:
+            out, err = (
+                    ffmpeg
+                    .input(path)
+                    .filter_("scale", self.width, self.height, flags='fast_bilinear', force_original_aspect_ratio='increase')
+                    .filter_("crop", self.width, self.height)
+                    .output('pipe:', format='rawvideo', pix_fmt='rgb24', vframes=180, vsync='0')
+                    .run(capture_stdout=True, capture_stderr=True)
+                )
+        except:
+            return self.__getitem__(index-1)
+        frames = np.frombuffer(out, np.uint8).reshape([-1, height, width, 3])  # [..., ::-1]
+        video = np.array(frames)
+        frame_jiange = max(1, video.shape[0] // self.num_frames)
+        video = video[::frame_jiange]
+        all_frame_num = video.shape[0]
+        # print(video.shape)
+        if all_frame_num < self.num_frames:
+            return self.__getitem__(index-1)
+
+        get_masks = create_random_shape_with_random_motion_zoom_rotation(
+            self.num_frames, 
+            imageHeight=height, 
+            imageWidth=width)
+
+        video_frames = []
+        mask_frames = []
+        for i in range(self.num_frames):
+            this_frame = video[i]
+            video_frames.append(self.frame_process(Image.fromarray(this_frame)))
+            mask_frames.append(self.mask_process(get_masks[i]))
+
+        video = torch.stack(video_frames, dim=0).permute(1, 0, 2, 3)  # [C, T, H, W]
+        mask = torch.stack(mask_frames, dim=0)
+        mask = mask.repeat(1, 3, 1, 1).permute(1, 0, 2, 3)
+        
+        if self.jvxing:
+            mask = mask_to_rectangular(mask.unsqueeze(0)).squeeze(0)
+
+        if self.is_outpainting:
+            c, t, h, w = mask.shape
+            out_rate = int((0.4/2)*w)
+            mask = mask*0
+            mask[:, :, :, :out_rate] = 1
+            mask[:, :, :, w-out_rate:] = 1
+
+        if mask.sum() == 0 or (1-mask).sum() == 0:
+            return self.__getitem__(index-1)
+
+        masked_video = video*(1-mask)
+
+        return {
+            "text": "",
+            "video": video,
+            "mask": mask,
+            "masked_video": masked_video,
+            "path": path,
+            "index": index,
+            "modality": "video"
+        }
+        
             
 class VideoPaintDatasetTest_wcy(Dataset):
     def __init__(self, 
