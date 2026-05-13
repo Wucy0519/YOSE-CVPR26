@@ -28,6 +28,7 @@ This code runs in the same environment as the minimax-remover, which you can fin
 
 ### Evaluation
 Download the pretrained model of Minimax Remover from <a href="https://huggingface.co/spaces/zibojia/MiniMax-Remover"><img alt="Huggingface Space" src="https://img.shields.io/badge/%F0%9F%A4%97%20Huggingface-Space-1e90ff"></a>.
+[Tips]: The pretrained model of Minimax Remover downloaded from HuggingFace does not include `model_index.json`; we recommend downloading it from the official wan2.1 code repository ([here](https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B-Diffusers/blob/main/model_index.json)).
 
 Download our eval dataset [ YouTuBe-VOS ] and [ DAVIS ] from: <a href="https://huggingface.co/datasets/wcy1234567/yose-dataset"><img alt="Huggingface TestDataset" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Benchmark-blue"></a>
 
