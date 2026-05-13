@@ -1,7 +1,6 @@
 # 🧊 YOSE: You Only Select Essential Tokens for Efficient DiT-based Video Object Removal
 
 <a href='http://arxiv.org/abs/2604.27322'><img src='https://img.shields.io/badge/Paper-arxiv-b31b1b.svg'></a> &nbsp;
-<a href="https://huggingface.co/datasets/wcy1234567/yose-dataset"><img alt="Huggingface TestDataset" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Benchmark-blue"></a> &nbsp;
 
 Due to circumstances beyond our control, this reproduction code was created by some science enthusiasts based on our paper. This is non-offical PyTorch codes for our CVPR26 paper.
 
@@ -18,6 +17,8 @@ Due to circumstances beyond our control, this reproduction code was created by s
 Recent advances in Diffusion Transformer (DiT)-based video generation technologies have shown impressive results for video object removal.  However, these methods still suffer from substantial inference latency. For instance, although MiniMax Remover achieves state-of-the-art visual quality, it operates at only around 10 FPS, primarily due to dense computations over the entire spatiotemporal token space—even when only a small masked region actually requires processing. In this paper, we present **YOSE** — **Y**ou **O**nly **S**elect **E**ssential Tokens, an efficient fine-tuning framework. YOSE introduces two key components: Batch Variable-length Indexing (BVI) and Diffusion Process Simulator (DiffSim) Module.  BVI is a differentiable dynamic indexing operator that adaptively selects essential tokens based on mask information, enabling variable-length token processing across samples. DiffSim provides a diffusion process approximation mechanism for unmasked tokens, which simulates the influence of unmasked regions within DiT self-attention to maintain semantic consistency for masked tokens. With these designs, YOSE achieves mask-aware acceleration, where the inference time scales approximately linearly with the masked regions — in contrast to full-token diffusion methods whose computation remains constant regardless of the mask size. Extensive experiments demonstrate that YOSE achieves up to 2.5X speedup in 70% of cases while maintaining visual quality comparable to the baseline.
 
 ## :robot: Training and Evaluation
+
+Download our eval dataset [ YouTuBe-VOS ] and [ DAVIS ] from: <a href="https://huggingface.co/datasets/wcy1234567/yose-dataset"><img alt="Huggingface TestDataset" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Benchmark-blue"></a> &nbsp;
 
 Coming Soon~
 
