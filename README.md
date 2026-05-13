@@ -1,6 +1,7 @@
 # 🧊 YOSE: You Only Select Essential Tokens for Efficient DiT-based Video Object Removal
 
 <a href='http://arxiv.org/abs/2604.27322'><img src='https://img.shields.io/badge/Paper-arxiv-b31b1b.svg'></a> &nbsp;
+<a href="https://huggingface.co/datasets/wcy1234567/yose-dataset"><img alt="Huggingface TestDataset" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Benchmark-blue"></a> &nbsp;
 
 Due to circumstances beyond our control, this reproduction code was created by some science enthusiasts based on our paper. This is non-official PyTorch code for our CVPR26 paper.
 
