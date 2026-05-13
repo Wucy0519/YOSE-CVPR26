@@ -2,7 +2,7 @@
 
 <a href='http://arxiv.org/abs/2604.27322'><img src='https://img.shields.io/badge/Paper-arxiv-b31b1b.svg'></a> &nbsp;
 
-Due to circumstances beyond our control, this reproduction code was created by some science enthusiasts based on our paper. This is non-offical PyTorch codes for our CVPR26 paper.
+Due to circumstances beyond our control, this reproduction code was created by some science enthusiasts based on our paper. This is non-official PyTorch code for our CVPR26 paper.
 
 >**YOSE: You Only Select Essential Tokens for Efficient DiT-based Video Object Removal**<br>[Chenyang Wu<sup>1</sup>](), [ Lina Lei<sup>1</sup>](), [ Fan Li<sup>2</sup>](),[Chun-Le Guo<sup>1,3,&dagger;</sup>](), [Dehong Kong<sup>2</sup>](), [Xinran Qin<sup>2</sup>](), [Zhixin Wang<sup>2</sup>](), [Mingming Cheng<sup>1,3</sup>](), [Chongyi Li<sup>1,3</sup>]() <br>
 > <sup>1</sup> VCIP, CS, Nankai University,  <sup>2</sup>Huawei Noah’s Ark Lab, <sup>3</sup>NKIARI, Shenzhen Futian<br>
@@ -19,6 +19,9 @@ Recent advances in Diffusion Transformer (DiT)-based video generation technologi
 ## :newspaper: News
 - [x] Release the inference code reproduced by research enthusiasts.
 - [ ] Release the training code reproduced by research enthusiasts.
+
+## :wrench: Dependencies and Installation
+This code runs in the same environment as the minimax-remover, which you can find in [here](https://github.com/zibojia/MiniMax-Remover).
 
 ## :robot: Training and Evaluation
 
