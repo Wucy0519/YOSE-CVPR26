@@ -27,6 +27,7 @@ This code runs in the same environment as the minimax-remover, which you can fin
 
 ### Evaluation
 Download our eval dataset [ YouTuBe-VOS ] and [ DAVIS ] from: <a href="https://huggingface.co/datasets/wcy1234567/yose-dataset"><img alt="Huggingface TestDataset" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Benchmark-blue"></a> &nbsp;
+
 Configure the following path information in `test.py`
 ```python
 wan_path = r"/home/wcy/checkpoint/MiniMax-Remover"                     # Minimax-Remover pretrained model
