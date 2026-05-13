@@ -32,6 +32,22 @@ Coming Soon~
 }
 ```
 
-## License
+## :scroll: License
 
-This project is licensed under the Pi-Lab License 1.0 - see the [LICENSE](LICENSE) file for details.
+Non-commercial Project. This project is licensed under the Pi-Lab License 1.0 - see the [LICENSE](LICENSE) file for details.
+
+## :postbox: Contact
+
+For technical questions, please contact `chenyangwu[AT]mail.nankai.edu.cn`.
+
+For commercial licensing, please contact `lichongyi[AT]nankai.edu.cn`.
+
+## :handshake: Acknowledgement
+
+This repository borrows heavily from [Diffuers](https://github.com/huggingface/diffusers) and [Minimax Remover](https://github.com/zibojia/MiniMax-Remover).<br/>
+
+We also thank all of our contributors.
+
+<a href="https://github.com/Wucy0519/YOSE-CVPR26/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Wucy0519/YOSE-CVPR26" />
+</a>
