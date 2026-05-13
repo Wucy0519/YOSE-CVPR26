@@ -41,7 +41,7 @@ python test.py
 ```
 
 ### Training
-Firstly, you can download the video dataset from VPData (proposed by VideoPainter), which is found in [here](https://github.com/TencentARC/VideoPainter) <a href='https://huggingface.co/datasets/TencentARC/VPData'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a> &nbsp;.
+Firstly, you can download the video dataset from VPData (proposed by VideoPainter), which is found in <a href='https://huggingface.co/datasets/TencentARC/VPData'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a> &nbsp; [here](https://github.com/TencentARC/VideoPainter).
 Only video is needed, and  70,000 samples are enough.
 
 Coming Soon~
