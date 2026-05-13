@@ -41,6 +41,9 @@ python test.py
 ```
 
 ### Training
+Firstly, you can download the video dataset from VPData (proposed by VideoPainter), which is found in [here](https://github.com/TencentARC/VideoPainter) <a href='https://huggingface.co/datasets/TencentARC/VPData'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a> &nbsp;.
+Only video is needed, and  70,000 samples are enough.
+
 Coming Soon~
 
 ## :book: Citation
@@ -66,7 +69,7 @@ For commercial licensing, please contact `lichongyi[AT]nankai.edu.cn`.
 
 ## :handshake: Acknowledgement
 
-This repository borrows heavily from [Diffuers](https://github.com/huggingface/diffusers) and [Minimax Remover](https://github.com/zibojia/MiniMax-Remover).<br/>
+This repository borrows heavily from [Diffuers](https://github.com/huggingface/diffusers), [Minimax Remover](https://github.com/zibojia/MiniMax-Remover) and [VideoPainter](https://github.com/TencentARC/VideoPainter).<br/>
 
 We also thank all of our contributors.
 
