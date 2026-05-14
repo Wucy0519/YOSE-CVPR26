@@ -85,9 +85,7 @@ Non-commercial Project. This project is licensed under the Pi-Lab License 1.0 - 
 
 ## :postbox: Contact
 
-For technical questions, please contact `chenyangwu[AT]mail.nankai.edu.cn`.
-
-For commercial licensing, please contact `lichongyi[AT]nankai.edu.cn`.
+For technical questions and commercial licensing, please contact `chenyangwu[AT]mail.nankai.edu.cn`.
 
 ## :handshake: Acknowledgement
 
