@@ -36,7 +36,7 @@ long_  = index1d_batch(short_, backward_index)                  # Backward BVI
 ```
 
 ### Diffusion Process Simulator ([DiffSim](https://github.com/Wucy0519/YOSE-CVPR26/blob/main/models/transformer_yose.py#L24))
-
+It's very simple and easy to implement; you can easily find it in our code.
 
 ## :wrench: Dependencies and Installation
 This code runs in the same environment as the minimax-remover, which you can find in [here](https://github.com/zibojia/MiniMax-Remover).
