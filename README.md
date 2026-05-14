@@ -23,6 +23,7 @@ Recent advances in Diffusion Transformer (DiT)-based video generation technologi
 
 ## :sparkles: Key Algorithm Implementation 
 ### Batch Variable-length Indexing ([BVI](https://github.com/Wucy0519/YOSE-CVPR26/blob/main/models/wcy_kit.py#L301))
+![BVI_img](assets/fig2.png)
 BVI is a general-purpose algorithm; You can use it for all DiT-based tasks involving local editing: like this
 ```python
 from .models.wcy_kit import get_index_grad_batch, index1d_batch
