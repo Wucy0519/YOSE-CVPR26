@@ -21,6 +21,22 @@ Recent advances in Diffusion Transformer (DiT)-based video generation technologi
 - [x] Release the inference code reproduced by research enthusiasts.
 - [x] Release the training code reproduced by research enthusiasts.
 
+## :sparkles: Key Algorithm Implementation 
+### Batch Variable-length Indexing ([BVI](https://github.com/Wucy0519/YOSE-CVPR26/blob/main/models/wcy_kit.py#L301))
+BVI is a general-purpose algorithm; You can use it for all DiT-based tasks involving local editing: like this
+```python
+from .models.wcy_kit import get_index_grad_batch, index1d_batch
+input = torch.randn([4, 7800, 1536]).cuda()
+masks = torch.randn([4, 7800]).cuda()
+
+forward_index, backward_index = get_index_grad_batch(masks)     # when the value of the element >= 0.5, this element is selected;
+short_ = index1d_batch(input, forward_index)                    # Forward BVI
+long_  = index1d_batch(short_, backward_index)                  # Backward BVI
+```
+
+### Diffusion Process Simulator ([DiffSim](https://github.com/Wucy0519/YOSE-CVPR26/blob/main/models/transformer_yose.py#L24))
+
+
 ## :wrench: Dependencies and Installation
 This code runs in the same environment as the minimax-remover, which you can find in [here](https://github.com/zibojia/MiniMax-Remover).
 
