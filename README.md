@@ -108,7 +108,7 @@ For technical questions and commercial licensing, please contact `chenyangwu[AT]
 
 ## :handshake: Acknowledgement
 
-This repository borrows heavily from [Diffuers](https://github.com/huggingface/diffusers), [Minimax Remover](https://github.com/zibojia/MiniMax-Remover) and [VideoPainter](https://github.com/TencentARC/VideoPainter).<br/>
+This repository borrows heavily from [Diffusers](https://github.com/huggingface/diffusers), [Minimax Remover](https://github.com/zibojia/MiniMax-Remover) and [VideoPainter](https://github.com/TencentARC/VideoPainter).<br/>
 
 We also thank all of our contributors.
 
