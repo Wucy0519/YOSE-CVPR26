@@ -639,8 +639,8 @@ class VideoPaintDatasetTest_wcy(Dataset):
         video_frames_np = np.frombuffer(out, np.uint8).reshape([-1, height, width, 3])   # [..., ::-1]
         video = np.array(video_frames_np)
         all_frame_num = video.shape[0]
-        if all_frame_num < self.num_frames:
-            return self.__getitem__(index-1)
+        # if all_frame_num < self.num_frames:
+        #     return self.__getitem__(index-1)
 
         # mask
         try:
@@ -655,12 +655,12 @@ class VideoPaintDatasetTest_wcy(Dataset):
         mask_frames_np = np.frombuffer(mask_out, np.uint8).reshape([-1, height, width, 3])
         mask_gray = mask_frames_np[..., 0]
         mask = mask_gray
-        if mask_frames_np.shape[0] < self.num_frames:
-            return self.__getitem__(index - 1)
+        # if mask_frames_np.shape[0] < self.num_frames:
+        #    return self.__getitem__(index - 1)
         
         video_frames = []
         mask_frames = []
-        for i in range(self.num_frames):
+        for i in range(all_frame_num):
             this_frame = video[i]
             video_frames.append(self.frame_process(Image.fromarray(this_frame)))
             mask_frames.append(self.mask_process(Image.fromarray(mask[i])))
