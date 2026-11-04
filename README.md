@@ -3,10 +3,6 @@
 <a href='http://arxiv.org/abs/2604.27322'><img src='https://img.shields.io/badge/Paper-arxiv-b31b1b.svg'></a> &nbsp;
 <a href="https://huggingface.co/datasets/wcy1234567/yose-dataset"><img alt="Huggingface TestDataset" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Benchmark-blue"></a> &nbsp;
 
-<p align="center">
-  <img src="assets/demo.gif" width="600">
-</p>
-
 Due to circumstances beyond our control, this reproduction code was created by some science enthusiasts based on our paper. This is non-official PyTorch code for our CVPR26 paper. 
 
 If you found this project helpful, please consider giving it a star🌟～
